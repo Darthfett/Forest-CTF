@@ -6,10 +6,10 @@ module FlagManip
 
     trigger pickupFlagTrig
     trigger dropFlagTrig
-    private static sound SND_FLAG_PICKUP_BAD = CreateSound("Sound//Interface//Warning.wav",false,false,false,10,10,"")
-    private static sound SND_FLAG_PICKUP_GOOD = CreateSound("Sound//Interface//Hint.wav",false,false,false,10,10,"")
-    private static sound SND_FLAG_RETURN = CreateSound("Sound//Interface//GoodJob.wav",false,false,false,10,10,"")
-    private static sound SND_FLAG_CAP = CreateSound("Sound//Interface//GameFound.wav",false,false,false,10,10,"")
+    //private static sound SND_FLAG_PICKUP_BAD = CreateSound("Sound//Interface//Warning.wav",false,false,false,10,10,"")
+    //private static sound SND_FLAG_PICKUP_GOOD = CreateSound("Sound//Interface//Hint.wav",false,false,false,10,10,"")
+    //private static sound SND_FLAG_RETURN = CreateSound("Sound//Interface//GoodJob.wav",false,false,false,10,10,"")
+    //private static sound SND_FLAG_CAP = CreateSound("Sound//Interface//GameFound.wav",false,false,false,10,10,"")
     
     method onEnterFlagRange takes Flag which returns nothing
         call IssuePointOrder(this.unit,"attack",which.x,which.y)
@@ -56,8 +56,8 @@ module FlagManip
             call DisplayTextToPlayer(this.owner.whichPlayer,0,0,RED + "You must have the flag in your base in order to score!" + END)
             return
         endif
-        call SetSoundVolume(Unit.SND_FLAG_CAP,127)
-        call StartSound(Unit.SND_FLAG_CAP)
+        //call SetSoundVolume(Unit.SND_FLAG_CAP,127)
+        //call StartSound(Unit.SND_FLAG_CAP)
         call Game.finishRound(this.owner.team)
     endmethod
     
@@ -87,17 +87,17 @@ module FlagManip
                 call DisplayTextToPlayer(GetLocalPlayer(),0,0,P2CN(this.owner.whichPlayer) + YELLOW + " has returned the flag to " + END + flag.teamNameColored + YELLOW + "'s base." + END)
                 set flag.isInBase = true
                 call this.checkCapture()
-                call SetSoundVolume(Unit.SND_FLAG_RETURN,127)
-                call StartSound(Unit.SND_FLAG_RETURN)
+                //call SetSoundVolume(Unit.SND_FLAG_RETURN,127)
+                //call StartSound(Unit.SND_FLAG_RETURN)
             endif
         else
             if IsPlayerInForce(GetLocalPlayer(),flag.whichPlayers) then
-                call SetSoundVolume(Unit.SND_FLAG_PICKUP_BAD,127)
-                call StartSound(Unit.SND_FLAG_PICKUP_BAD)
+                ////call SetSoundVolume(Unit.SND_FLAG_PICKUP_BAD,127)
+                //call StartSound(Unit.SND_FLAG_PICKUP_BAD)
                 call DisplayTextToPlayer(GetLocalPlayer(),0,0,P2CN(this.owner.whichPlayer) + YELLOW + " has taken your flag!!" + END)
             else
-                call SetSoundVolume(Unit.SND_FLAG_PICKUP_GOOD,127)
-                call StartSound(Unit.SND_FLAG_PICKUP_GOOD)
+                //call SetSoundVolume(Unit.SND_FLAG_PICKUP_GOOD,127)
+                //call StartSound(Unit.SND_FLAG_PICKUP_GOOD)
                 call DisplayTextToPlayer(GetLocalPlayer(),0,0,P2CN(this.owner.whichPlayer) + YELLOW + " has taken the enemy flag!!" + END)
             endif
             set this.hasFlag = true
