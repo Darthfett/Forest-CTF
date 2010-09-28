@@ -1,0 +1,25 @@
+= Forest CTF =
+
+== About ==
+
+Forest CTF is a Capture the Flag styled game scripted in 'vJass' for Warcraft III - The Frozen Throne.
+
+The game involves two teams of players (1-6 players each team).  Each player chooses a hero with its own unique \
+abilities that help the hero fight to retrieve the enemy flag, and bring it back to his base.
+
+With a total of six heroes, the Warrior, Mage, Hunter, Assassin, Rogue, and Paladin, the game has a \
+rock-paper-scissors style battle system, with each hero having his own strengths and weaknesses.
+
+The game has its own AI system, and depending upon the game options chosen by the game host, \
+it may automatically balance teams, allowing for fun games even in the case of a leaving player.
+
+== Install ==
+
+Place the game file (*.w3x) into the Download folder in the Warcraft III directory (traditionally \
+'C:\Program Files\Warcraft III\Maps\Download\').  The game should then be available in the Warcraft III \
+maps browser.
+
+== Running the Game ==
+
+Once installed, simply run Warcraft III, and under single player, LAN, or Battle.net Multiplayer, host the \
+map as you would any other.
