@@ -1,5 +1,8 @@
 = Forest CTF =
 
+Currently the game is version 2.0 alpha.  It's not in any way ready for testing, and has many bugs and unimplemented \
+features.  If the code is currently in a compilable state, you can play the game as a preview of what is to come.
+
 == About ==
 
 Forest CTF is a Capture the Flag styled game scripted in 'vJass' for Warcraft III - The Frozen Throne.
@@ -15,7 +18,7 @@ it may automatically balance teams, allowing for fun games even in the case of a
 
 == Install ==
 
-Place the game file (*.w3x) into the Download folder in the Warcraft III directory (traditionally \
+Place the game file (ForestCTF20a.w3x) into the Download folder in the Warcraft III directory (traditionally \
 'C:\Program Files\Warcraft III\Maps\Download\').  The game should then be available in the Warcraft III \
 maps browser.
 
