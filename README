@@ -26,3 +26,10 @@ maps browser.
 
 Once installed, simply run Warcraft III, and under single player, LAN, or Battle.net Multiplayer, host the \
 map as you would any other.
+
+== Compiling ==
+
+In order to compile the code, you must have a working copy of Newgen and an updated version of Warcraft III. \
+Newgen can be found here: http://www.wc3c.net/showthread.php?t=90999 .  Once Newgen is installed, \
+the map can be compiled by simply running Newgen, opening the existing map file, and saving.  JassHelper will \
+automatically compile the vJass to JASS, and report any problems or errors in doing so.
