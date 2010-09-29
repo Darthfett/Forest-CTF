@@ -1,11 +1,11 @@
-library Skip initializer Init uses stringFind,Game
+library Skip initializer Init uses Game, stringFilter
 
 globals
     private constant string cmd = "-skip"
 endglobals
 
 private function Conditions takes nothing returns boolean
-    return CommandSetup and (GetTriggerPlayer() == Game.host) and ContainsString(StringCase(GetEventPlayerChatString(),false),cmd,false)
+    return CommandSetup and (GetTriggerPlayer() == Game.host) and RStrip(StringCase(GetEventPlayerChatString(),false)) == cmd
 endfunction
 
 private function Actions takes nothing returns nothing
