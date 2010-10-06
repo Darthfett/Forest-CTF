@@ -19,7 +19,7 @@ library Assassin uses Systems
         private static method onInit takes nothing returns nothing
             set ASSASSIN = Assassin.create('E002')
             
-            set ASSASSIN.model = gg_unit_E002_0023
+            set ASSASSIN.model = Repick_Assassin
             
             set ASSASSIN.isHero = true
             

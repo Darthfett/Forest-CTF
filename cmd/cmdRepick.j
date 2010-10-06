@@ -109,10 +109,22 @@ globals
     public integer maxLvl = 6
     public boolean array isRepicking
     public fogmodifier array area
+    public unit Warrior
+    public unit Rogue
+    public unit Hunter
+    public unit Paladin
+    public unit Mage
+    public unit Assassin
 endglobals
 
 private function Init takes nothing returns nothing
     local integer i = 0
+    set Repick_Warrior=CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'E003', 3346.9, 6503.6, 188.309)
+    set Repick_Rogue=CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'E001', 2645.4, 7273.4, 255.000)
+    set Repick_Hunter=CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'E005', 2903.8, 7291.3, 240.000)
+    set Repick_Paladin=CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'E000', 3165.6, 7304.1, 225.000)
+    set Repick_Mage=CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'E004', 3338.5, 7077.1, 205.000)
+    set Repick_Assassin=CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'E002', 3348.2, 6799.0, 180.000)
     loop
         exitwhen i >= 12
         if AI(i).isPlaying then

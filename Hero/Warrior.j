@@ -61,7 +61,7 @@ library Warrior uses Systems
             set WARRIOR_CHARGE = Ability.create('A01F',"banish",TARGET_TYPE_UNIT,40,30,0,0)
             set WARRIOR_BLOOD_RAGE = Ability.create('A01W',"defend",TARGET_TYPE_NONE,0,0,0,0)
             
-            set WARRIOR.model = gg_unit_E003_0007
+            set WARRIOR.model = Repick_Warrior
             
             set WARRIOR.isHero = true
             

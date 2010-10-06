@@ -19,7 +19,7 @@ library Paladin uses Systems
         private static method onInit takes nothing returns nothing
             set PALADIN = Paladin.create('E000')
             
-            set PALADIN.model = gg_unit_E000_0021
+            set PALADIN.model = Repick_Paladin
             
             set PALADIN.isHero = true
             

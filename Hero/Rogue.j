@@ -74,7 +74,7 @@ library Rogue uses Systems
         private static method onInit takes nothing returns nothing
             set ROGUE = Rogue.create('E001')
             
-            set ROGUE.model = gg_unit_E001_0008
+            set ROGUE.model = Repick_Rogue
             
             set ROGUE.isHero = true
             

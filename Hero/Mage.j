@@ -19,7 +19,7 @@ library Mage uses Systems
         private static method onInit takes nothing returns nothing
             set MAGE = Mage.create('E004')
             
-            set MAGE.model = gg_unit_E004_0022
+            set MAGE.model = Repick_Mage
             
             set MAGE.isHero = true
             

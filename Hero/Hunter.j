@@ -105,7 +105,7 @@ library Hunter uses Systems
         private static method onInit takes nothing returns nothing
             set HUNTER = Hunter.create('E005')
             
-            set HUNTER.model = gg_unit_E005_0020
+            set HUNTER.model = Repick_Hunter
             
             set HUNTER.isHero = true
             
