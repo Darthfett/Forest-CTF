@@ -1,6 +1,11 @@
 library FlagManip
 
 module FlagManip
+    /*
+    
+    Some functionality for Units related to manipulating the Flags
+    
+    */
 
     static trigger enterCapRegionTrig
 
@@ -15,10 +20,24 @@ module FlagManip
     //private static sound SND_FLAG_CAP = CreateSound("Sound//Interface//GameFound.wav",false,false,false,10,10,"")
     
     method onEnterFlagRange takes Flag which returns nothing
+        /*
+        
+        UNIMPLEMENTED
+        Ideally, this will cause Units to protect a friendly flag carrier, attack an enemy flag carrier,
+        or return/pick-up a friendly/enemy flag.
+        
+        */
+        
         call IssuePointOrder(this.unit,"attack",which.x,which.y)
     endmethod
     
     method operator hasFlag= takes boolean hasFlag returns nothing
+        /*
+        
+        When a Unit picks up the flag, he/she has some abilities disabled, and slowed movement speed here
+        
+        */
+        
         set this.HasFlag = hasFlag
         call SetPlayerAbilityAvailable(this.owner.whichPlayer,'A00O',not hasFlag)
         call SetPlayerAbilityAvailable(this.owner.whichPlayer,'A00H',not hasFlag)
@@ -44,10 +63,18 @@ module FlagManip
     endmethod
     
     method operator hasFlag takes nothing returns boolean
+        //Returns whether a Unit has the enemy Flag
         return this.HasFlag
     endmethod
     
     method checkCapture takes nothing returns nothing
+        /*
+        
+        When a Unit enters the Flag Capture Region, this method checks whether it has the flag, and is not an illusion,
+        as well as whether the flag is actually in the base.  If it is a 'capture', it will 'finish' the round.
+        
+        */
+        
         local integer i = 0
         if this.hasFlag == false then
             return
@@ -65,6 +92,12 @@ module FlagManip
     endmethod
     
     static method enterCapRegionActions takes nothing returns nothing
+        /*
+        
+        Runs checkCapture if a Unit is entering their respectiving Flag Capture Region.
+        
+        */
+        
         local Unit this = Unit[GetTriggerUnit()]
         if GetTriggeringRegion() != this.owner.team.capRegion then
             return
@@ -74,10 +107,17 @@ module FlagManip
     endmethod
     
     static method flagConditions takes nothing returns boolean
+        //Checks that the manipulated item is a flag, and that the manipulator is not an illusion
         return (GetManipulatedItem() == Team(0).whichFlag or GetManipulatedItem() == Team(1).whichFlag) and IsUnitIllusion(GetTriggerUnit()) == false
     endmethod
     
     method pickupFlagActions takes nothing returns nothing
+        /*
+        
+        Runs whenever this Unit picks up a Flag (returning it if it is his own, running hasFlag= if it is the enemy's)
+        
+        */
+        
         local Flag flag = Flag[GetManipulatedItem()]
         
         if this.owner.team == flag then
@@ -108,6 +148,13 @@ module FlagManip
     endmethod
         
     method dropFlagActions takes nothing returns nothing
+        /*
+        
+        Runs whenever this Unit drops the enemy Flag (running hasFlag=False)
+        
+        */
+        
+        set this.hasFlag = false
         set this.owner.enemyTeam.carrier = 0
         call TriggerSleepAction(0)
         set this.owner.enemyTeam.x = GetItemX(this.owner.enemyTeam.whichFlag)
@@ -121,6 +168,12 @@ module FlagManip
     endmethod
     
     private static method onInit takes nothing returns nothing
+        /*
+        
+        Sets up some basic triggers related to entering Flag zones
+        
+        */
+        
         set Unit.enterCapRegionTrig = CreateTrigger()
         call TriggerRegisterEnterRegion(Unit.enterCapRegionTrig,Team(0).capRegion,null)
         call TriggerRegisterEnterRegion(Unit.enterCapRegionTrig,Team(1).capRegion,null)

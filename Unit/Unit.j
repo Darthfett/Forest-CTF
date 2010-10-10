@@ -21,90 +21,121 @@ struct Unit extends array
     private boolean HasFlag
     
     method operator < takes Unit compare returns boolean
+        /*
+        
+        Used for the AI, in calculating whether a Unit is "probably" going to win in a fight.
+        
+        */
+        
         return ((this.life / this.maxLife) + 5) * 2 + ((this.mana / this.maxMana) + 5) * 0.5 < ((compare.life / compare.maxLife) + 5) * 2 + ((compare.mana / compare.maxMana) + 5) * 0.5
     endmethod
     
     method operator name takes nothing returns string
+        //Gets the Unit's name
         return GetUnitName(this.unit)
     endmethod
     
     method operator x takes nothing returns real
+        //Gets the Unit's x-position
         return GetUnitX(this.unit)
     endmethod
     
     method operator x= takes real x returns nothing
+        //Sets the Unit's x-position
         call SetUnitX(this.unit,x)
     endmethod
     
     method operator y takes nothing returns real
+        //Gets the Unit's y-position
         return GetUnitY(this.unit)
     endmethod
     
     method operator y= takes real y returns nothing
+        //Sets the Unit's y-position
         call SetUnitY(this.unit,y)
     endmethod
     
     method operator maxMana takes nothing returns real
+        //Gets the Unit's max Mana
         return GetUnitState(this.unit,UNIT_STATE_MAX_MANA)
     endmethod
     
     method operator mana takes nothing returns real
+        //Gets the Unit's current Mana
         return GetUnitState(this.unit,UNIT_STATE_MANA)
     endmethod
     
     method operator manaPercent takes nothing returns real
+        //Gets the Unit's % Mana
         return this.mana / this.maxMana
     endmethod
     
     method operator maxLife takes nothing returns real
+        //Gets the Unit's max Life
         return GetUnitState(this.unit,UNIT_STATE_MAX_LIFE)
     endmethod
     
     method operator life takes nothing returns real
+        //Gets the Unit's current Life
         return GetWidgetLife(this.unit)
     endmethod
     
     method operator lifePercent takes nothing returns real
+        //Gets the Unit's % Life
         return this.life / this.maxLife
     endmethod
     
     method operator mana= takes real mana returns nothing
+        //Sets the Unit's Mana
         call SetUnitState(this.unit,UNIT_STATE_MANA,mana)
     endmethod
     
     method operator life= takes real life returns nothing
+        //Sets the Unit's Life
         call SetWidgetLife(this.unit,life)
     endmethod
     
     method operator invulnerable= takes boolean flag returns nothing
+        //Sets the Unit (Un)invulnerable
         set this.Invulnerable = flag
         call SetUnitInvulnerable(this.unit,flag)
     endmethod
     
     method operator invulnerable takes nothing returns boolean
+        //Returns whether the Unit is invulnerable
         return this.Invulnerable
     endmethod
     
     method operator paused= takes boolean flag returns nothing
+        //Sets the Unit (not) paused
         set this.Paused = flag
         call PauseUnit(this.unit,flag)
     endmethod
     
     method operator paused takes nothing returns boolean
+        //Returns whether the Unit is paused
         return this.Paused
     endmethod
     
     method operator facing takes nothing returns real
+        //Gets the Unit's facing (in Radians)
         return GetUnitFacing(this.unit)
     endmethod
     
     method operator facing= takes real facing returns nothing
+        //Sets the Unit's facing
         call SetUnitFacing(this.unit,facing)
     endmethod
     
 //====================================================================
     
     method AIDS_onDestroy takes nothing returns nothing
+        /*
+        
+        Cleans up the Unit's data when it is removed
+        
+        */
+        
         call this.friendly.destroy()
         call this.threats.destroy()
         call DestroyTrigger(this.enterRangeTrig)
@@ -124,11 +155,17 @@ struct Unit extends array
     endmethod        
         
     method AIDS_onCreate takes nothing returns nothing
+        /*
+        
+        Sets up the Unit's data when it is created
+        
+        */
+        
         set this.whichType = UnitType[GetUnitTypeId(this.unit)]
         set this.owner = AI[GetOwningPlayer(this.unit)]
         
-        set this.friendly = Group.create()
-        set this.threats = Group.create()
+        set this.friendly = Group.create() //Nearby friendly units
+        set this.threats = Group.create() //Nearby enemy units
         
         set this.enterRangeTrig = CreateTrigger()
         set this.enterRangeTimer = CreateTimer()
@@ -151,6 +188,7 @@ struct Unit extends array
         set this.HasFlag = false
         
         if this.whichType.isHero then
+            //Heroes have a few extra capabilities
             set this.level = 0
             call this.gainLevelActions()
             set this.gainLevelTrig = CreateTrigger()
@@ -168,6 +206,7 @@ struct Unit extends array
             call TriggerAddMethodAction(this,this.dropFlagTrig,Unit.dropFlagActions)
             
             if this.owner.hero == 0 then
+                //TODO: Figure out if this comparison makes sense
                 set this.reviveTimer = CreateTimer()
                 set this.reviveDialog = CreateTimerDialog(this.reviveTimer)
                 call TimerDialogSetTitle(this.reviveDialog,P2CN(this.owner.whichPlayer) + " in:")

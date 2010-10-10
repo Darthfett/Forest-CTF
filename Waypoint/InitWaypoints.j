@@ -1,6 +1,11 @@
 library InitWaypoins
 
     module InitWaypoints
+        /*
+        
+        Separated for readability, this initializes all the Waypoints with their adjacent Waypoints in each direction
+        
+        */
     
         static method onInit takes nothing returns nothing
             set Waypoint.Z[0] = Waypoint.create(gg_rct_NW_Main)

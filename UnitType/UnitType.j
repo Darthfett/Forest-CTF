@@ -1,6 +1,14 @@
 library UnitType uses Ability
 
     struct UnitType
+        /*
+        
+        Every Unit has some basic information that is independent of its state, such as what Abilities it has, whether
+        it is a hero or not, etc.
+        
+        This data is stored here, or in one of its child structs.
+        
+        */
         
         implement EnvMethods
         
@@ -15,10 +23,22 @@ library UnitType uses Ability
         unit model
 
         static method getRandomHero takes nothing returns UnitType
+            /*
+            
+            Returns a UnitType for a random selectable hero (for repicking purposes)
+            
+            */
+            
             return UnitType(GetRandomInt(integer(WARRIOR),integer(ASSASSIN)))
         endmethod
         
         static method create takes integer whichType returns UnitType
+            /*
+            
+            Creates a new UnitType and stores it in the hashtable
+            
+            */
+            
             local UnitType this = UnitType.allocate()
             set this.whichType = whichType
             set this.isHero = false
@@ -29,7 +49,7 @@ library UnitType uses Ability
         static method operator[] takes integer whichType returns UnitType
             /*
             
-            UnitTypes are stored in a hashtable with their keys being 0 and their corresponding '0000' number.
+            UnitTypes are stored in the hashtable with their keys being 0 and their corresponding '0000' number.
             
             */
             
@@ -40,6 +60,12 @@ library UnitType uses Ability
         endmethod
         
         private static method onInit takes nothing returns nothing
+            /*
+            
+            Initializes the hashtable
+            
+            */
+            
             set UnitType.ht = InitHashtable()
         endmethod
         
