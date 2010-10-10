@@ -6,6 +6,9 @@ module FlagManip
 
     trigger pickupFlagTrig
     trigger dropFlagTrig
+    /* For some reason the four sounds below are giving errors when compiling.
+    I am commenting them out until I can isolate the problem. */
+    
     //private static sound SND_FLAG_PICKUP_BAD = CreateSound("Sound//Interface//Warning.wav",false,false,false,10,10,"")
     //private static sound SND_FLAG_PICKUP_GOOD = CreateSound("Sound//Interface//Hint.wav",false,false,false,10,10,"")
     //private static sound SND_FLAG_RETURN = CreateSound("Sound//Interface//GoodJob.wav",false,false,false,10,10,"")

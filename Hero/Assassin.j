@@ -11,12 +11,32 @@ library Assassin uses Systems
     endglobals
 
     struct Assassin extends UnitType
+    
+        /*
+
+        UNIMPLEMENTED
+        The Assassin struct contains basic behavior for how units of type Assassin behave.
+
+        */
         
         static method onEnterFlagRange takes Unit this, Flag which returns nothing
+            /*
+            
+            UNIMPLEMENTED
+            Behavior for when a hero comes within a certain range of the given flag.
+            Ideally, this will allow a bot to attempt to pick-up or return the flag.
+            
+            */
+            
             call IssueTargetOrder(this.unit,"smart",which.whichFlag)
         endmethod
     
         private static method onInit takes nothing returns nothing
+            /*
+            
+            Basic initialization
+            
+            */
             set ASSASSIN = Assassin.create('E002')
             
             set ASSASSIN.model = Repick_Assassin

@@ -27,6 +27,12 @@ library UnitType uses Ability
         endmethod
 
         static method operator[] takes integer whichType returns UnitType
+            /*
+            
+            UnitTypes are stored in a hashtable with their keys being 0 and their corresponding '0000' number.
+            
+            */
+            
             if not HaveSavedInteger(UnitType.ht,0,whichType) then
                 return UnitType.create(whichType)
             endif

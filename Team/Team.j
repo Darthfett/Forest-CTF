@@ -1,6 +1,17 @@
 library Team uses Game,UnitType
 
 struct Team
+
+    /*
+    
+    A "Team" has two definitions:
+        Group of players on the same side
+        The flag itself
+
+    You may notice there is a "Flag" struct.  This is merely to make the method names make sense.
+    
+    */
+    
     item whichFlag
     Team enemyTeam
     integer teamNumber
@@ -31,6 +42,13 @@ struct Team
 //====================================================================
     
     static method balance takes nothing returns nothing
+        /*
+        
+        Balance the teams, so that the teams are equal in number.
+        Currently, this is done by adding bots to each side.
+        
+        */
+        
         local integer i = 0
         local AI ai
         loop
@@ -49,10 +67,22 @@ struct Team
     endmethod
     
     method capture takes nothing returns nothing
+        /*
+        
+        When a team scores, this method is run.
+        
+        */
+        
         set this.score = this.score + 1
     endmethod
     
     stub method toString takes nothing returns string
+        /*
+        
+        For testing purposes, gives the name of the team.
+        
+        */
+        
         if this == Team(0) then
             return "Team NW"
         else
@@ -65,6 +95,12 @@ struct Team
 //====================================================================
     
     static method init takes nothing returns nothing
+        /*
+        
+        Sets up both teams, creating the flags and a few other basic stuff.
+        
+        */
+    
         set Team(0).enemyTeam = Team(1)
         set Team(1).enemyTeam = Team(0)
         
@@ -114,6 +150,12 @@ struct Flag extends Team
     Flag enemyFlag
     
     static method operator [] takes item i returns Flag
+        /*
+        
+        Converts the physics flag item into the wrapper Flag.
+        
+        */
+        
         if Flag(0).whichFlag == i then
             return Team(0)
         endif
@@ -121,6 +163,12 @@ struct Flag extends Team
     endmethod
     
     method reset takes nothing returns nothing
+        /*
+        
+        Moves the flag back to home base, and sets the carrier to null.
+        
+        */
+        
         call SetItemPosition(this.whichFlag,this.startX,this.startY)
         set this.x = this.startX
         set this.y = this.startY
@@ -129,6 +177,12 @@ struct Flag extends Team
     endmethod
     
     static method ping takes nothing returns nothing
+        /*
+        
+        This is run periodically by an outside function.  Pings both flags for both teams to see.
+        
+        */
+        
         local Flag this = Flag(0)
         if Start then
             if this.carrier != null then
@@ -145,6 +199,12 @@ struct Flag extends Team
     endmethod
     
     method toString takes nothing returns string
+        /*
+        
+        For testing purposes, displays the name of the Flag.
+        
+        */
+        
         if this == Flag(0) then
             return "Flag NW"
         else
@@ -153,6 +213,12 @@ struct Flag extends Team
     endmethod
     
     static method onInit takes nothing returns nothing
+        /*
+        
+        Sets up the flag, and starts the pinging effect.
+        
+        */
+        
         set Flag(0).enemyFlag = Flag(1)
         set Flag(1).enemyFlag = Flag(0)
         call TimerStart(CreateTimer(),10,true,function Flag.ping)

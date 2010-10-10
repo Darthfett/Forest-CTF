@@ -17,7 +17,8 @@ library Orders
         endmethod
         
         method runOrders takes nothing returns nothing
-            call Debug.PlaceHolder("run Orders: " + I2S(this))
+            //Placeholder:
+            call BJDebugMsg("Run Orders: " + I2S(this))
 /*            local real heroX = this.hero.x
             local real heroY = this.hero.y
             local real newX
@@ -82,6 +83,7 @@ library Orders
             loop
                 exitwhen i>= 12
                 if AI(i).isEnabled then
+                    call BJDebugMsg("World Event: Run orders for " + I2S(i))
                     call Debug.PlaceHolder("World Event, run orders for: " + I2S(i))
                 endif
                 set i = i + 1
