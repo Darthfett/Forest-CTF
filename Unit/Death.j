@@ -91,8 +91,11 @@ library Death
             local Unit this = Unit[GetTriggerUnit()]
             set this.isAlive = false
             set Unit.tempUnit = this
-            call GroupEnumUnitsInRange(ENUM_GROUP,this.x,this.y,thistype.ENTER_RANGE_MIN_DISTANCE,Filter(function thistype.onDeathFilter))
+            call GroupEnumUnitsInRange(ENUM_GROUP,this.x,this.y,thistype.ENTER_RANGE_MIN_DISTANCE,Filter(function thistype.onDeathFilter)) //Tells all nearby bots when a unit dies near them
+            call BJDebugMsg(this.name + " death")
+            call BJDebugMsg(I2S(this.whichType) + " (" + I2S(this.whichType.whichType) + ")")
             if this.whichType.isHero then
+                call BJDebugMsg("Hero Respawn")
                 call TimerDialogDisplay(this.reviveDialog,true)
                 call StartTimer(this,this.reviveTimer,9 + (I2R(GetUnitLevel(this.unit)) / 2),false, Unit.onDeathCallback)
             endif

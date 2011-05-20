@@ -86,6 +86,9 @@ struct AI
         local group g = CreateGroup()
         local unit fog
         local string str
+        if not whichType.isHero then
+            call BJDebugMsg("WTF!!!!")
+        endif
         call GroupEnumUnitsOfPlayer(g,this.whichPlayer,null)
         call GroupRemoveUnit(this.units,uo.unit)
         call GroupRemoveUnit(this.team.whichHeroes,uo.unit)

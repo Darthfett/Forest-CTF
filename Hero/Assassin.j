@@ -36,10 +36,9 @@ library Assassin uses Systems
             
             Basic initialization
             
-            */
-            set ASSASSIN = Assassin.create('E002')
+            */           
             
-            set ASSASSIN.model = Repick_Assassin
+            set ASSASSIN = Assassin.create('E002')
             
             set ASSASSIN.isHero = true
             

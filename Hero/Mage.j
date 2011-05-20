@@ -19,8 +19,6 @@ library Mage uses Systems
         private static method onInit takes nothing returns nothing
             set MAGE = Mage.create('E004')
             
-            set MAGE.model = Repick_Mage
-            
             set MAGE.isHero = true
             
             set MAGE_FIREBOLT = Ability.create('A00Y',"firebolt",TARGET_TYPE_UNIT,65,65,65,65)

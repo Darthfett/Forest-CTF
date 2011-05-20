@@ -19,8 +19,6 @@ library Paladin uses Systems
         private static method onInit takes nothing returns nothing
             set PALADIN = Paladin.create('E000')
             
-            set PALADIN.model = Repick_Paladin
-            
             set PALADIN.isHero = true
             
             set PALADIN_STORM_BOLT = Ability.create('A00S',"stormbolt",TARGET_TYPE_UNIT,60,60,60,60)

@@ -29,8 +29,7 @@ library UnitType uses Ability
             Returns a UnitType for a random selectable hero (for repicking purposes)
             
             */
-            
-            return UnitType(GetRandomInt(0,5))
+            return Heroes[GetRandomInt(0,5)]
         endmethod
         
         static method create takes integer whichType returns UnitType

@@ -74,8 +74,6 @@ library Rogue uses Systems
         private static method onInit takes nothing returns nothing
             set ROGUE = Rogue.create('E001')
             
-            set ROGUE.model = Repick_Rogue
-            
             set ROGUE.isHero = true
             
             set ROGUE_SPRINT = Ability.create('A00D',"berserk",TARGET_TYPE_NONE,50,46,43,40)

@@ -1,4 +1,4 @@
-library Game uses AIDS,Data,stringFind,stringPlayer,Powerups
+library Game uses AIDS, Data, stringFind, stringPlayer, Powerups, Repick
 
 globals
     boolean Start = false
@@ -284,6 +284,7 @@ creator, and some generic functions for starting rounds.
     
         call Team.init.execute()
         call AI.init.execute()
+        call Repick_init.execute()
     endmethod
         
     private static method selectOptions takes nothing returns nothing

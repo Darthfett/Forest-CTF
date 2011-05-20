@@ -105,8 +105,6 @@ library Hunter uses Systems
         private static method onInit takes nothing returns nothing
             set HUNTER = Hunter.create('E005')
             
-            set HUNTER.model = Repick_Hunter
-            
             set HUNTER.isHero = true
             
             set HUNTER_FLURRY_OF_ARROWS = Ability.create('A018',"",TARGET_TYPE_UNIT,0,0,0,0)
