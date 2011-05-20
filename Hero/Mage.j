@@ -34,6 +34,8 @@ library Mage uses Systems
             set MAGE.desc[0] = BLUE + "Murloc Mage" + END //some Power, some control, little survivability
             set MAGE.desc[1] = YELLOW + "Excels in " + END + BLUE + "Ranged Combat" + END + YELLOW + "." + END
             set MAGE.desc[2] = YELLOW + "The secret of the mage is through the powers of its mind." + END
+            
+            set UnitType.Heroes[2] = MAGE
         endmethod
     
     endstruct

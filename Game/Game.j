@@ -55,7 +55,7 @@ creator, and some generic functions for starting rounds.
     static method removeSummons takes nothing returns nothing
         /*
         
-        Removes all units that are players' summons or results of power-ups.
+        Removes all units that are players' summons or results of power-ups.'
         
         */
     
@@ -172,7 +172,7 @@ creator, and some generic functions for starting rounds.
     private static method setupOptions takes nothing returns nothing
         /*
         
-        Options selected during setup are actually run, and the game starts players' hero choosing.
+        Options selected during setup are actually run, and the game starts players' hero choosing.'
         
         */
     
@@ -193,7 +193,7 @@ creator, and some generic functions for starting rounds.
             call AP_Start()
             loop
                 exitwhen i >= 12
-                if AI(i).isEnabled then //So that newly balanced players do not get a new hero
+                if AI(i).isEnabled then //Bots get a random hero
                     call AI(i).setHero.evaluate(UnitType.getRandomHero())
                 endif
                 set i = i + 1
@@ -201,7 +201,7 @@ creator, and some generic functions for starting rounds.
         else
             loop
                 exitwhen i >= 12
-                if not AI(i).isEmpty then
+                if not AI(i).isEmpty then //All players get a random hero
                     call AI(i).setHero.evaluate(UnitType.getRandomHero())
                 endif
                 set i = i + 1
@@ -231,7 +231,7 @@ creator, and some generic functions for starting rounds.
     private static method warn takes nothing returns nothing
         /*
         
-        If the host doesn't type -skip before the setup period is over, the game will automatically
+        If the host doesn't type -skip before the setup period is over, the game will automatically'
         warn players of the game start.
         
         */

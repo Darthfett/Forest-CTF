@@ -34,6 +34,8 @@ library Paladin uses Systems
             set PALADIN.desc[0] = LIGHTYELLOW + "Makrura Paladin" + END //little Power, little Control, Survivability
             set PALADIN.desc[1] = YELLOW + "Excels in " + END + RED + "Close Combat" + END + YELLOW + "." + END
             set PALADIN.desc[2] = YELLOW + "Survivability is the Paladin's hidden power."
+            
+            set UnitType.Heroes[3] = PALADIN
         endmethod
         
     endstruct

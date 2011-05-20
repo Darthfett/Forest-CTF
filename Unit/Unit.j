@@ -132,7 +132,7 @@ struct Unit extends array
     method AIDS_onDestroy takes nothing returns nothing
         /*
         
-        Cleans up the Unit's data when it is removed
+        Cleans up the Unit's data when it is removed'
         
         */
         
@@ -157,7 +157,7 @@ struct Unit extends array
     method AIDS_onCreate takes nothing returns nothing
         /*
         
-        Sets up the Unit's data when it is created
+        Sets up the Unit's data when it is created'
         
         */
         

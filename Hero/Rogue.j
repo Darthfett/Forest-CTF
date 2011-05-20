@@ -89,6 +89,8 @@ library Rogue uses Systems
             set ROGUE.desc[0] = BROWN + "Gnoll Rogue" + END //some Power, control, no survivability
             set ROGUE.desc[1] = YELLOW + "Excels in " + END + BLUE + "Ranged Combat" + END + YELLOW + "." + END
             set ROGUE.desc[2] = YELLOW + "The Rogue's high damage output and maneuverability is offset by his fragility." + END
+            
+            set UnitType.Heroes[4] = ROGUE
         endmethod
         
     endstruct

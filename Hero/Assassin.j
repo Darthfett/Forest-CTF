@@ -53,6 +53,8 @@ library Assassin uses Systems
             set ASSASSIN.desc[0] = DARKGREEN + "Troll Assassin" + END //little power, some control, some survivability
             set ASSASSIN.desc[1] = YELLOW + "Excels in " + END + GREEN + "All Combat" + END + YELLOW + "." + END
             set ASSASSIN.desc[2] = YELLOW + "The Assassin is slippery and deadly in the right hands." + END
+            
+            set UnitType.Heroes[0] = ASSASSIN
         endmethod
         
     endstruct

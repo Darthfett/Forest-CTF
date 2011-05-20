@@ -70,6 +70,8 @@ library Warrior uses Systems
             set WARRIOR.desc[0] = RED + "Demon Warrior" + END //Power, no control, some survivability
             set WARRIOR.desc[1] = YELLOW + "Excels in " + END + RED + "Close Combat" + END + YELLOW + "." + END
             set WARRIOR.desc[2] = YELLOW + "What the Warrior lacks in range, he gains in power." + END
+            
+            set UnitType.Heroes[0] = WARRIOR
         endmethod
         
     endstruct

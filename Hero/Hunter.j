@@ -120,6 +120,8 @@ library Hunter uses Systems
             set HUNTER.desc[0] = ORANGE + "Human Hunter" + END //some Power, some Control, some Survivability
             set HUNTER.desc[1] = YELLOW + "Excels in " + END + GREEN + "All Combat" + END + YELLOW + "." + END
             set HUNTER.desc[2] = YELLOW + "The Hunter thrives in a balance between control, survivability, and power." + END
+            
+            set UnitType.Heroes[1] = HUNTER
         endmethod
     
     endstruct

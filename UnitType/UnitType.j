@@ -16,6 +16,7 @@ library UnitType uses Ability
         boolean isHero
         
         private static hashtable ht
+        static UnitType array Heroes[6]
 
         Ability array abil[5]
         real range
@@ -29,7 +30,7 @@ library UnitType uses Ability
             
             */
             
-            return UnitType(GetRandomInt(integer(WARRIOR),integer(ASSASSIN)))
+            return UnitType(GetRandomInt(0,5))
         endmethod
         
         static method create takes integer whichType returns UnitType
