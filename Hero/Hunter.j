@@ -2,7 +2,7 @@ library Hunter uses Systems
 
     globals
         integer HUNTER_MID_RANGE = 350
-        UnitType HUNTER
+        Hunter HUNTER
         
         Ability HUNTER_FLURRY_OF_ARROWS
         Ability HUNTER_LAY_TRAP
@@ -102,7 +102,7 @@ library Hunter uses Systems
             endif
         endmethod                        
     
-        private static method onInit takes nothing returns nothing
+        static method init takes nothing returns nothing
             set HUNTER = Hunter.create('E005')
             
             set HUNTER.isHero = true

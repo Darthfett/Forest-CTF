@@ -3,7 +3,7 @@ library Warrior uses Systems
     globals
         integer WARRIOR_BATTLE_CRY_MANA_MIN_REQ = 80
         
-        UnitType WARRIOR
+        Warrior WARRIOR
         
         Ability WARRIOR_RAMPAGE
         Ability WARRIOR_SLASH
@@ -51,7 +51,7 @@ library Warrior uses Systems
             endif
         endmethod
 
-        private static method onInit takes nothing returns nothing
+        static method init takes nothing returns nothing
             set WARRIOR = Warrior.create('E003')
             
             set WARRIOR_RAMPAGE = Ability.create('A01I',"stomp",TARGET_TYPE_NONE,50,50,50,50)

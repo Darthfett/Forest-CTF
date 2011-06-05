@@ -41,6 +41,13 @@ library UnitType uses Ability
             
             local UnitType this = UnitType.allocate()
             set this.whichType = whichType
+            if whichType == 'E001' then
+                call BJDebugMsg("Hooray, we are working!")
+                call BJDebugMsg(I2S(this))
+                call BJDebugMsg(I2S('E001'))
+                call BJDebugMsg(I2S(whichType))
+                call BJDebugMsg(I2S(this.whichType))
+            endif
             set this.isHero = false
             call SaveInteger(UnitType.ht,0,whichType,this)
             return this
@@ -57,6 +64,15 @@ library UnitType uses Ability
                 return UnitType.create(whichType)
             endif
             return LoadInteger(UnitType.ht,0,whichType)
+        endmethod
+        
+        static method initHeroes takes nothing returns nothing
+            call Assassin.init()
+            call Hunter.init()
+            call Mage.init()
+            call Paladin.init()
+            call Rogue.init()
+            call Warrior.init()
         endmethod
         
         private static method onInit takes nothing returns nothing

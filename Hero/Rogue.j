@@ -3,7 +3,7 @@ library Rogue uses Systems
     globals
         integer ROGUE_MID_RANGE = 350
     
-        UnitType ROGUE
+        Rogue ROGUE
         
         Ability ROGUE_SPRINT
         Ability ROGUE_ENSNARE
@@ -16,6 +16,10 @@ library Rogue uses Systems
         
         static method onEnterFlagRange takes Unit this, Flag which returns nothing
             call IssueTargetOrder(this.unit,"smart",which.whichFlag)
+        endmethod
+        
+        static method create takes integer whichType returns Rogue
+            return Rogue.allocate(whichType)
         endmethod
         
         static method engage takes Unit this, Unit target returns nothing
@@ -71,9 +75,14 @@ library Rogue uses Systems
             endif
         endmethod             
     
-        private static method onInit takes nothing returns nothing
+        static method init takes nothing returns nothing
+            call DisplayTextToPlayer(GetLocalPlayer(), 0, 0, "Before")
             set ROGUE = Rogue.create('E001')
-            
+            call DisplayTextToPlayer(GetLocalPlayer(),0,0, "Rogue this: " + I2S(ROGUE))
+            call DisplayTextToPlayer(GetLocalPlayer(),0,0, "Rogue Rawcode: " + I2S(ROGUE.whichType))
+            if ROGUE.whichType != 'E001' then
+                call BJDebugMsg("Something's wrong with Rogue.create")
+            endif
             set ROGUE.isHero = true
             
             set ROGUE_SPRINT = Ability.create('A00D',"berserk",TARGET_TYPE_NONE,50,46,43,40)

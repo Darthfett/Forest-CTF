@@ -1,7 +1,7 @@
 library Paladin uses Systems
 
     globals
-        UnitType PALADIN
+        Paladin PALADIN
         
         Ability PALADIN_STORM_BOLT
         Ability PALADIN_BASH
@@ -16,7 +16,7 @@ library Paladin uses Systems
             call IssueTargetOrder(this.unit,"smart",which.whichFlag)
         endmethod
     
-        private static method onInit takes nothing returns nothing
+        static method init takes nothing returns nothing
             set PALADIN = Paladin.create('E000')
             
             set PALADIN.isHero = true
